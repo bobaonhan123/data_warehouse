@@ -1,1 +1,1 @@
-input_path = 'input_data/CoffeeShopSales.xlsx'
+input_path = 'input_data/CoffeeShopSalesTmp.xlsx'
