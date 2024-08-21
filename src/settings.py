@@ -1,0 +1,1 @@
+input_path = 'input_data/CoffeeShopSales.xlsx'
