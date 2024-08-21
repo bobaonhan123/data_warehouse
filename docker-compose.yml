@@ -1,0 +1,9 @@
+services:
+  db:
+    container_name: mongodb_container
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    restart: unless-stopped
