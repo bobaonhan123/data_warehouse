@@ -1,5 +1,6 @@
 import pandas as pd
-from . import settings
+from src import settings
+from src.db import db
 
 
 def import_time():

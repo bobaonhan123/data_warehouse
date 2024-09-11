@@ -12,7 +12,7 @@ def init_db_connection():
         print("Connected to the database")
         return db, mongoClient
     except Exception as e:
-        print(e)
+        print("db exception",e)
         return None, None
 
 
