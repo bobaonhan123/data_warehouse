@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: mongodb_container
+    container_name: mongodb_datawarehouse
     image: mongo:latest
     ports:
       - "27017:27017"
