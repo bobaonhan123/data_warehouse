@@ -6,7 +6,4 @@ services:
       - "27017:27017"
     volumes:
       - ./data:/data/db
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=datawarehouse
-      - MONGO_INITDB_ROOT_PASSWORD=123
     restart: unless-stopped
