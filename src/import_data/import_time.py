@@ -32,7 +32,7 @@ def import_time():
     # Keep only the required columns
     df = df[['year', 'month', 'weekday', 'day', 'hour']]
     # Convert to dictionary
-    data_dict = df.iloc[1:].to_dict(orient='records')
+    data_dict = df.to_dict(orient='records')
 
     print(data_dict[:5])
     print(len(data_dict))
