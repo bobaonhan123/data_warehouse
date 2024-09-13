@@ -4,3 +4,4 @@ input_data/
 data/
 src/preprocessing_test.py
 data_test/
+*.xlsx
