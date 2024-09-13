@@ -18,6 +18,13 @@ def import_prod_in_store():
     data_dict = product_in_store.to_dict(orient='records')
     print(data_dict[:5])
     print("prod_in_store:",len(data_dict))
-    product_in_store_db.insert_many(data_dict)
+    data_id=1
+    for data in data_dict:
+        data["prod_in_store_id"]=data_id
+        try:
+            product_in_store_db.insert_one(data)
+            data_id+=1
+        except:
+            pass
 
     
