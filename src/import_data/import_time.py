@@ -11,6 +11,11 @@ def import_time():
     except:
         pass
     # time_db.create_index([('year', 1), ('month', 1), ('weekday', 1), ('day', 1), ('hour', 1)], unique=True)
+    time_db.create_index(
+    [('year', 1), ('month', 1), ('weekday', 1), ('day', 1), ('hour', 1)],
+    unique=True
+)
+
     df = pd.read_excel(settings.input_path, sheet_name='Transactions')
 
     # Parse the transaction_date and transaction_time columns
