@@ -1,6 +1,6 @@
 from os import getenv
 
-input_path = 'input_data/CoffeeShopSalesTmp.xlsx'
+input_path = getenv("INPUT_PATH",'input_data/CoffeeShopSalesTmp.xlsx')
 
 MONGO_HOST = getenv("MONGO_HOST", "localhost")
 MONGO_PORT = getenv("MONGO_PORT", "27017")
