@@ -63,7 +63,7 @@ def import_transaction():
                 'transaction_datetime': data['transaction_datetime'],
                 'transaction_qty': data['transaction_qty'],
                 'unit_price': data['unit_price'],
-                'product_in_store': data['product_in_store']['_id'],  # Link to product_in_store collection
+                'product_in_store': data['product_in_store']['prod_in_store_id'],  # Link to product_in_store collection
                 'transaction_time': data['transaction_time']['time_id']  # Link to time collection
             }
             transaction_db.insert_one(transaction_record)
