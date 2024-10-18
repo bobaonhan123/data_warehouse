@@ -1,3 +1,4 @@
 - Tải file CoffeeShopSales.xlsx ở tin nhắn
 - Tạo thư mục input_data
 - Copy file CoffeeShopSales.xlsx vào đó
+- Tạo thư mục output_data

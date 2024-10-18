@@ -1,7 +1,9 @@
 venv/
 __pycache__/
 input_data/
+output_data/
 data/
 src/preprocessing_test.py
+src/query_test.py
 data_test/
 *.xlsx
