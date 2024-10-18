@@ -1,4 +1,6 @@
 import json
+import pandas as pd
+
 from src.db import db
 import src.settings as settings
 
@@ -23,4 +25,18 @@ def c1_rev_by_hour():
         categories_dict[category][hour] += sale['quantity'] * sale['unit_price']
     
     print(categories_dict)
-    json.dump(categories_dict, open(settings.output_path+'c1_rev_by_hour.json', 'w'))
+    
+    rows = []
+    
+    for product_category, hours in categories_dict.items():
+        for hour, revenue in hours.items():
+            transaction_qty = 1 if revenue > 0 else 0
+            rows.append({
+                "Hour": int(hour),
+                "Product_category": product_category,
+                "Revenue": revenue,
+                "Transaction_qty": transaction_qty
+            })
+    
+    df = pd.DataFrame(rows)
+    df.to_csv(settings.output_path+'c1_rev_by_hour.csv', index=False)
