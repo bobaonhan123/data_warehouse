@@ -17,24 +17,25 @@ def c1_rev_by_hour():
         sale['time'] = time_dimension
     # print(sales_by_time[0])
     categories = product_db.distinct('product_category')
-    categories_dict = {category: {i: 0 for i in range(24)} for category in categories}
+    categories_dict = {category: {i: {'quantity':0,'revenue':0} for i in range(24)} for category in categories}
     # print(categories_dict)
     for sale in sales_by_time:
         category = sale['product']['product_category']
         hour = sale['time']['hour']
-        categories_dict[category][hour] += sale['quantity'] * sale['unit_price']
+        categories_dict[category][hour]['revenue'] += sale['quantity'] * sale['unit_price']
+        categories_dict[category][hour]['quantity'] += sale['quantity']
     
     print(categories_dict)
     
     rows = []
     
     for product_category, hours in categories_dict.items():
-        for hour, revenue in hours.items():
-            transaction_qty = 1 if revenue > 0 else 0
+        for hour, hval in hours.items():
+            transaction_qty = hval['quantity']
             rows.append({
                 "Hour": int(hour),
                 "Product_category": product_category,
-                "Revenue": revenue,
+                "Revenue": hval['revenue'],
                 "Transaction_qty": transaction_qty
             })
     

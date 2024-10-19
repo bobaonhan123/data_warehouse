@@ -37,8 +37,10 @@ def import_sales_by_time():
         id_and_time = str(data['product_id']) +"-"+ str(data['year']) +"-"+ str(data['month']) +"-"+ str(data['weekday']) +"-"+ str(data['day']) +"-"+ str(data['hour'])
         if id_and_time in ndict:
             ndict[id_and_time]['transaction_qty']+=data['transaction_qty']
+            ndict[id_and_time]['transaction_cnt']+=1
         else:
             ndict[id_and_time]=data
+            ndict[id_and_time]['transaction_cnt']=1
     data_id = 1
     inserted = []
     for data in ndict.values():
@@ -53,6 +55,7 @@ def import_sales_by_time():
                 'unit_price': data['unit_price'],
                 'time_dim_id': time_dim_id,
                 'transaction_datetime': transaction_datetime,
+                'transaction_cnt': data['transaction_cnt']
             }
             sales_by_time_db.insert_one(data_to_insert)
             inserted.append(data_to_insert)
