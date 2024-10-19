@@ -11,10 +11,10 @@ def import_sales_by_time():
             sales_by_time_db.drop()
     except:
         pass
-    sales_by_time_db.create_index(
-    [('product_id', 1), ('year', 1), ('month', 1), ('weekday', 1), ('day', 1), ('hour', 1)],
-    unique=True
-    )
+    # sales_by_time_db.create_index(
+    # [('product_id', 1), ('year', 1), ('month', 1), ('weekday', 1), ('day', 1), ('hour', 1)],
+    # unique=True
+    # )
     
     
     df = pd.read_excel(settings.input_path, sheet_name='Transactions')
@@ -61,8 +61,9 @@ def import_sales_by_time():
             inserted.append(data_to_insert)
             
             data_id += 1
-        except:
-            pass
+        except Exception as e:
+            print(f"Error inserting sales_by_time record: {e}")
+
     
     
 
