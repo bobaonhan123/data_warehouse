@@ -31,6 +31,8 @@ def import_time():
 
     # Keep only the required columns
     df = df[['year', 'month', 'weekday', 'day', 'hour']]
+    # Drop duplicates based on all columns
+    df = df.drop_duplicates()
     # Convert to dictionary
     data_dict = df.to_dict(orient='records')
 
